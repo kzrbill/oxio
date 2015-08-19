@@ -4,7 +4,8 @@
   "description": "Naughts &amp; crosses, multiplayer",
   "main": "server.js",
   "scripts": {
-    "test": ""
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "server.js"
   },
   "author": "Will Grange",
   "license": "GNU",
