@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Naughts &amp; crosses, multiplayer</title>
+    <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font: 13px Helvetica, Arial; }
+    form textarea { padding: 10px; width: 300px; height: 300px; font: 50px Courier; }
+    form button { width: 100px; height: 50px; position: relative; }
+    </style>
+    </head>
+    <body>
+    <h1>Naughts &amp; crosses, multiplayer</h1>
+    <form action="">
+      <textarea id="game-text-area" autocomplete="off">---
+---
+---</textarea><br /><button>Send</button>
+    </form>
+    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    <script>
+    var socket = io();
+    
+    $('form').submit(function(){
+      console.log("form subitted");
+      socket.emit('turn', $('#game-text-area').val());
+      $('#m').val('');
+      return false;
+    });
+
+    socket.on('turn', function(msg){
+      $('#game-text-area').val(msg);
+    });
+    </script>
+  </body>
+</html>
