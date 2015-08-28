@@ -18,6 +18,11 @@ io.on('connection', function(socket){
     console.log('turn: ' + msg);
     io.emit('turn', msg);
   });
+
+  socket.on('message', function(msg){
+    console.log('message: ' + msg);
+    io.emit('message', msg);
+  });
 });
 
 http.listen(process.env.PORT || 3000, function(){
