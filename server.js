@@ -4,7 +4,7 @@ var express = require('express'),
     io = require('socket.io')(http),
     path = require('path');
 
-app.use(express.static(path.join(__dirname, './www')));
+app.use(express.static('public'));
 
 io.on('connection', function(socket){
   

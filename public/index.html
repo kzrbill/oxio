@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Naughts &amp; crosses - massively multiplayer</title>
+    <link rel="stylesheet" type="text/css" href="/main.css">
+    </head>
+    <body>
+    <h1>Naughts &amp; crosses - massively multiplayer</h1>
+    <form action="" id="game-form">
+      <textarea id="game-text-area" autocomplete="off">---
+---
+---</textarea><br /><button>Make turn</button>
+    </form>
+
+    <form action="" id="message-form">
+      <input id="message-input" autocomplete="off" /><button>Send</button>
+    </form>
+
+    <ul id="message-output"></ul>
+
+    <script src="/js/lib/socket.io/socket.io-1.2.0.js"></script>
+    <script src="/js/lib/jquery/jquery-1.11.1.js"></script>
+    <script>
+    var socket = io();
+    
+    $('#game-form').submit(function(){
+      socket.emit('turn', $('#game-text-area').val());
+      return false;
+    });
+
+    $('#message-form').submit(function(){
+      socket.emit('message', $('#message-input').val());
+      $('#message-input').val('');
+      return false;
+    });
+
+    socket.on('turn', function(msg){
+      $('#game-text-area').val(msg);
+    });
+
+    socket.on('message', function(msg){
+      $('#message-output').append("<li>" + msg + "</li>");
+    });
+    </script>
+  </body>
+</html>
