@@ -6,10 +6,6 @@ var express = require('express'),
 
 app.use(express.static(path.join(__dirname, './www')));
 
-// app.get('/', function(req, res){
-//   res.sendFile(__dirname + '/www/index.html');
-// });
-
 io.on('connection', function(socket){
   
   console.log('a user connected');
