@@ -12,3 +12,10 @@ form#message-form button { width: 9%; background: rgb(130, 224, 255); border: no
 #message-output { list-style-type: none; margin: 0; padding: 0; }
 #message-output li { padding: 5px 10px; }
 #message-output li:nth-child(odd) { background: #eee; }
+
+.board .square { font: 85px Helvetica, Arial; }
+.square { background-color: red}
+.square { margin: 2px; width: 100px; height: 100px; text-align: center; float: left;}
+.square:nth-child(3n+1){
+    clear:left
+}
