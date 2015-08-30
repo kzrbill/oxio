@@ -6,6 +6,7 @@
     <script src="/js/lib/socket.io/socket.io-1.2.0.js"></script>
     <script src="/js/lib/jquery/jquery-1.11.1.js"></script>
     <script src="/js/lib/react/react.min.js"></script>
+    <script src="/js/lib/react/JSXTransformer.js"></script>
   </head>
   
   <body>
@@ -15,6 +16,34 @@
 ---
 ---</textarea><br /><button>Make turn</button>
     </form>
+
+    <!-- Next implement in react to sucle between noughts crosses, then can start stearming that state -->
+
+    <div id="content"></div>
+
+    <script type="text/jsx">
+    var LikeButton = React.createClass({
+      getInitialState: function() {
+        return {liked: false};
+      },
+      handleClick: function(event) {
+        this.setState({liked: !this.state.liked});
+      },
+      render: function() {
+        var text = this.state.liked ? 'like' : 'haven\'t liked';
+        return (
+          <p onClick={this.handleClick}>
+            You {text} this. Click to toggle.
+          </p>
+        );
+      }
+    });
+
+    React.render(
+      <LikeButton />,
+      document.getElementById('content')
+    );
+    </script>
 
     <div class="board">
       <div class="square" id="s1">O</div>
