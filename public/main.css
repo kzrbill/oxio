@@ -13,7 +13,8 @@ form#message-form button { width: 9%; background: rgb(130, 224, 255); border: no
 #message-output li { padding: 5px 10px; }
 #message-output li:nth-child(odd) { background: #eee; }
 
-.board .square { font: 85px Helvetica, Arial; }
+.board .square { font: 85px Helvetica, Arial; cursor: pointer; }
+.square { -moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none; }
 .square { background-color: red}
 .square { margin: 2px; width: 100px; height: 100px; text-align: center; float: left;}
 .square:nth-child(3n+1){
