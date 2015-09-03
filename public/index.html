@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
   <head>
-    <title>Naughts &amp; crosses - massively multiplayer</title>
+    <title>Massively multiplayer naughts &amp; crosses</title>
     <link rel="stylesheet" type="text/css" href="/main.css">
     <script src="/js/lib/socket.io/socket.io-1.2.0.js"></script>
     <script src="/js/lib/jquery/jquery-1.11.1.js"></script>
@@ -10,17 +10,20 @@
   </head>
   
   <body>
-    <h1>Naughts &amp; crosses - massively multiplayer</h1>
+    <h1>Massively multiplayer naughts &amp; crosses</h1>
+
+    <p class="intro">(Experimentation with React, Socket.IO and Express)</p>
 
     <div id="board"></div>
     <script type="text/jsx" src="/js/board.js"></script>
 
     <br />
 
+    <ul id="message-output"></ul>
+
     <form action="" id="message-form">
-      <input id="message-input" autocomplete="off" /><button>Send</button>
+      <input id="message-input" autocomplete="off" /><button>Send chat</button>
     </form>
-  <ul id="message-output"></ul>
   
   <script src="/js/messages.js"></script>
 </body>
