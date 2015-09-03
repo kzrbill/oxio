@@ -25,9 +25,10 @@
 // }
 
 var Square = React.createClass({
-  childHandleClick: function(event){
+  childHandleClick: function(event, reactSquareIndex){
 
-    this.props.onSquareClick();
+    var index = reactSquareIndex.slice(-1);
+    this.props.onSquareClick(index);
 
     console.log(this.props);
     console.log(event);
@@ -41,14 +42,20 @@ var Square = React.createClass({
 
 var Board = React.createClass({
     getInitialState: function() {
-        return {game: [{id: 1, mark: '-'}, {id: 2, mark: '-'}, {id: 3, mark: '-'}]};
+        return {game: [{id: 0, mark: '-'}, {id: 1, mark: '-'}, {id: 2, mark: '-'}]};
     },
-    parentHandleClick: function() {
-        console.log('parentHandleClick called');
+    parentHandleClick: function(squareIndex) {
+
+        var game = this.state.game;
+        game[squareIndex] = {id: squareIndex, mark: 'X'};
+
+        this.setState({game: game});
+
+        // TODO - now pass game to socket IO
     },
     render: function() {
 
-        // Assign to variable
+        // [Assign to variable as will lose context from this in map function]
         var parentHandleClick = this.parentHandleClick;
 
         var squares = this.state.game.map(
@@ -57,13 +64,13 @@ var Board = React.createClass({
                 <Square key={square.id} mark={square.mark} onSquareClick={parentHandleClick} />
             );
         });
-            
+
         return (
           <div className="commentList">
             {squares}
           </div>
         );
-  }
+    }
 });
 
 React.render(
