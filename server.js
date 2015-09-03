@@ -20,6 +20,11 @@ io.on('connection', function(socket){
     io.emit('message', 'a user disconnected');
   });
 
+  socket.on('gameStateUpdate', function(game){
+    console.log('gameStateUpdate: ' + game);
+    io.emit('gameStateUpdate', game);
+  });
+
   socket.on('turn', function(msg){
     console.log('turn: ' + msg);
     io.emit('turn', msg);
@@ -29,6 +34,9 @@ io.on('connection', function(socket){
     console.log('message: ' + msg);
     io.emit('message', msg);
   });
+
+
+
 });
 
 http.listen(process.env.PORT || 3000, function(){
