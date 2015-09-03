@@ -23,7 +23,7 @@ var Square = React.createClass({
   nextMark: function ()
   {
     var marks = ['-', 'O', 'X'];
-    var nextMark = '';
+    var nextMark = '-';
     marks.nextLoopValue(
       this.state.mark,
       function(nextValue){
@@ -43,20 +43,18 @@ var Board = React.createClass({
   render: function() {
     return (
       <div className="board">
-        <Square />
-        <Square />
-        <Square />
-        <Square />
-        <Square />
-        <Square />
-        <Square />
-        <Square />
-        <Square />
+        <Square index="1" />
+        <Square index="2" />
+        <Square index="3" />
+        <Square index="4" />
+        <Square index="5" />
+        <Square index="6" />
+        <Square index="7" />
+        <Square index="8" />
       </div>
     );
   }
 });
-
 
 React.render(
   <Board />,
